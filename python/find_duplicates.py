@@ -1,18 +1,11 @@
 def find_duplicates_nested_loop(l: list) -> list:
+    s = set()
     result = []
 
-    for i in range(len(l)):
-        a = l[i]
-
-        for j in range(len(l)):
-            if i == j:
-                continue
-
-            b = l[j]
-
-            if a == b and a not in result:
-                result.append(a)
-                break
+    for value in l:
+        if value in s:
+            result.append(value)
+        s.add(value)
 
     return result
 
