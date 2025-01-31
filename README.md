@@ -1,7 +1,3 @@
-# Hi
+There are two ways to find duplicates in a list mentioned in this document. The first involves a nested `for` loop which checks every element against every other element. This is about as inefficient as possible. It's often called the naive approach because it is generally the first solution one comes up with. There is a quirk within the question, however, that allows us to do better. Because we're only concerned with *duplicates*, each time we encounter an element we've fundamentally changed the entropy of the problem space, which the naive approach does not account for. If we use a map data structure to store elements when we encounter them, duplicates are automatically discounted when stored.
 
-# Add to README.md
-
-## Find All Duplicates
-
-Write a function (or static method in the case of Java) that accepts a list of integers and returns a list of only those integers that appear more than once.
+In practical terms, the naive approach is taking into consideration not only the value, but the position of the value in the list. If that information is important, it very well may be the only way to solve a problem. In this case, it isn't. Using a map requires only one iteration over the list, and because we can assume a `map` implementation has O(1) insertion and O(1) retrieval, the function runs in O(N) time. Using nested loops requires O(N) operations *for each of N elements*, meaning it runs in O(N^2) time.
