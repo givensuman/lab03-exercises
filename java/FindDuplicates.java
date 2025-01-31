@@ -6,20 +6,24 @@ import java.util.List;
 public class FindDuplicates {
 
   public static List<Integer> findDuplicatesNestedLoops(List<Integer> l) {
-    List<Integer> duplicates = new ArrayList<>();
+    List<Integer> result = new ArrayList<>();
     for (int i = 0; i < l.size(); i++) {
-      Integer current = l.get(i);
+      Integer a = l.get(i);
+
       for (int j = 0; j < i; j++) {
-        if (current.equals(l.get(j))) {
-          duplicates.add(current);
+        if (i == j)
+          continue;
+
+        Integer b = l.get(j);
+
+        if (a.equals(b) && !result.contains(a)) {
+          result.add(a);
           break;
         }
       }
     }
 
-    return new HashSet<>(duplicates)
-        .stream()
-        .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+    return result;
   }
 
   public static void main(String[] args) {
